@@ -10,6 +10,8 @@ v-add-dns-domain
 
 **Example usage**: `v-add-dns-domain admin example.com ns1.example.com ns2.example.com yes`
 
+In the above example, a new DNS Domain *example.com* will be added under Hestia user *admin* and it will be assigned NS Servers *ns1.example.com* and *ns2.example.com*. After that the DNS Server software will restart.
+
 ****************************************
 v-add-dns-on-web-alias
 ****************************************
@@ -18,6 +20,8 @@ v-add-dns-on-web-alias
 
 **Example usage**: `v-add-dns-on-web-alias admin www.example.com 8.8.8.8`
 
+This command will add a new DNS Record (or DNS Domain if it doesn't exist) for the web alias **www**.example.com pointing to IP address *8.8.8.8*.
+
 ****************************************
 v-add-dns-record
 ****************************************
@@ -25,6 +29,12 @@ v-add-dns-record
 **Parameters**: User Domain Record Type Value [PRIORITY] [ID] [RESTART]
 
 **Example usage**: `v-add-dns-record admin acme.com www A 162.227.73.112`
+
+This command is used for adding DNS Records in DNS Domains. The example above will add an *A record* with name *www* and IP *162.227.73.112* on the DNS Domain acme.com, which belongs to the admin user.
+
+.. note::
+
+  Before using any **v-add-remote-dns-XXX** command, the dns-cluster functionality should be configured first. 
 
 ****************************************
 v-add-remote-dns-domain
@@ -123,6 +133,10 @@ v-change-dns-record-id
 
 **Example usage**: `v-change-dns-record-id admin acme.com 24 42 yes`
 
+.. note::
+
+  Before using any **v-change-remote-dns-XXX** command, the dns-cluster functionality should be configured first.
+
 ****************************************
 v-change-remote-dns-domain-exp
 ****************************************
@@ -190,8 +204,11 @@ v-delete-dns-record
 
 **Parameters**: User Domain Id [RESTART]
 
-
 **Example usage**: `v-delete-dns-record bob acme.com 42 yes`
+
+.. note::
+
+  Before using any **v-delete-remote-dns-XXX** command, the dns-cluster functionality should be configured first.
 
 ****************************************
 v-delete-remote-dns-domain
@@ -321,6 +338,9 @@ v-suspend-dns-record
 
 **Example usage** `v-suspend-dns-record alice wonderland.com 42 yes`
 
+.. note::
+
+  Before using the **v-suspend-remote-dns-host** command, the dns-cluster functionality should be configured first.
 
 ****************************************
 v-suspend-remote-dns-host
@@ -363,6 +383,10 @@ v-unsuspend-dns-record
 **Parameters**: User Domain Id [RESTART]
 
 **Example usage**: `v-unsuspend-dns-record admin example.com 33`
+
+.. note::
+
+  Before using the **v-unsuspend-remote-dns-host** command, the dns-cluster functionality should be configured first.
 
 ****************************************
 v-unsuspend-remote-dns-host
